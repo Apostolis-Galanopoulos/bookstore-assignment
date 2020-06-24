@@ -17,6 +17,9 @@
   
   .main {
     grid-area: main;
+    max-width: 70%;
+    min-width: 70%;
+    margin: 0 auto;
     background-color: #fffff8;
   }
   
@@ -31,4 +34,16 @@
     justify-content: space-between;
     padding: 0 16px;
     background-color: #efefef;
+  }
+  @media only screen and (max-width: 1600px) {
+    .main {
+      max-width: 80%;
+      min-width: 80%;
+    }
+  }
+  @media only screen and (max-width: 1377px) {
+    .main {
+      max-width: 100%;
+      min-width: 100%;
+    }
   }

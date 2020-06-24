@@ -1,0 +1,25 @@
+:host  {
+    color: white;
+    padding: 1rem;
+    height: 12rem;
+    width: 13rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    :first-child {
+        height: 150px;
+    }
+    .starts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: baseline;
+        align-items: center;
+    }
+    h3 {
+        color: black;
+        font-size: medium;
+        font-weight: 400;
+    }
+  }

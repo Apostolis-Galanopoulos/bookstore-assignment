@@ -16,7 +16,7 @@ export class BooksService {
     const booksData: Book[] = BOOKS;
     booksData.forEach((book: Book) => {
       this.store.dispatch(new BookActions.AddBook(book));
-    })
+    });
   }
 
   addBook(book: Book): void {

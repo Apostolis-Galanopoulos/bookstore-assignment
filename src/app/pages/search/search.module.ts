@@ -19,7 +19,7 @@ import { BooksService } from 'src/app/@core/books/books.service';
 export class SearchModule { }
 
 
-export function onLoad(booksService : BooksService)
+export function onLoad(booksService: BooksService)
 {
-  return ()=> booksService.getBooks();
+  return () => booksService.getBooks();
 }

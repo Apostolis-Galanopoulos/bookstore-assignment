@@ -1,4 +1,2 @@
 
-<bookstore-book-item *ngFor="let item of books | async; let i = index" [book]="item">
-
-</bookstore-book-item>
+<bookstore-book-item *ngFor="let item of books | async | search: searchKey; let i = index" [book]="item"></bookstore-book-item>

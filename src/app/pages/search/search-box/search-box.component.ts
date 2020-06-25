@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/@core/search/search.service';
 
 @Component({
   selector: 'bookstore-search-box',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBoxComponent implements OnInit {
 
-  constructor() { }
+  private values = '';
+
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
   }
-
+  
+  onKey(event: any) {
+    this.values = event.target.value;
+    this.searchService.searchAbook(this.values);
+  }
 }

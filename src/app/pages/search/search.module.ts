@@ -7,9 +7,10 @@ import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { BooksService } from 'src/app/@core/books/books.service';
+import { SearchPipe } from './book-list/search.pipe';
 
 @NgModule({
-  declarations: [SearchComponent, SearchBoxComponent, SearchFilterComponent, BookListComponent, BookItemComponent],
+  declarations: [SearchComponent, SearchBoxComponent, SearchFilterComponent, BookListComponent, BookItemComponent, SearchPipe],
   imports: [
     SearchRoutingModule,
     CommonModule

@@ -14,7 +14,7 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   onKey(event: any) {
     this.values = event.target.value;
     this.searchService.searchAbook(this.values);

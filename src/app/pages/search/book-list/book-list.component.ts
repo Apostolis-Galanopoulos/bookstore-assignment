@@ -13,7 +13,7 @@ import { SearchService } from 'src/app/@core/search/search.service';
 })
 export class BookListComponent implements OnInit {
 
-  searchKey: string = '';
+  searchKey = '';
   books: Observable<Book[]>;
   bookSearch: Subscription;
 

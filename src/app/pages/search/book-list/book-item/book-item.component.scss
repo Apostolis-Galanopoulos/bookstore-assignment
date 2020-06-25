@@ -7,7 +7,20 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border: 0px solid #000000;
 
+    :hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        -webkit-box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2);
+        -moz-box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2);
+    }
     :first-child {
         height: 150px;
     }

@@ -15,7 +15,7 @@ export class BookListComponent implements OnInit {
   books: Observable<Book[]>;
 
   constructor(private store: Store<BookState>, private booksService: BooksService) {
-    // this.booksService.getBooks();
+    this.booksService.getBooks();
     this.books = this.store.select('book');
   }
 

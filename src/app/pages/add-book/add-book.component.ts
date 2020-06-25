@@ -20,6 +20,7 @@ export class AddBookComponent implements OnInit {
       author: 'Axel Rauschmayer',
       published: '2014-02-01T00:00:00.000Z',
       publisher: 'O\'Reilly Media',
+      picture: "https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg",
       pages: 460,
       description: 'Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.',
       website: 'http://speakingjs.com/'

@@ -6,6 +6,7 @@ import { CoreModule } from './@core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { BooksService } from './@core/books/books.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { RouterModule } from '@angular/router';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
   ],
-  providers: [],
+  providers: [BooksService, {provide : APP_INITIALIZER, useFactory : onLoad, deps: [BooksService] , multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function onLoad(booksService: BooksService)
+{
+  return () => booksService.getBooks();
+}

@@ -5,8 +5,12 @@ export const BOOKS: any = [
         isbnThirteen: 9781449331818,
         title: 'Eloquent JavaScript, Second Edition',
         subtitle: 'A Modern Introduction to Programming',
-        author: 'Marijn Haverbeke',
+        author: [{
+          name: 'Marijn Haverbeke'
+        }],
         published: '2014-12-14T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 1,
         publisher: 'No Starch Press',
         pages: 472,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -18,8 +22,12 @@ export const BOOKS: any = [
         isbnThirteen: 9781449331818,
         title: 'Learning JavaScript Design Patterns',
         subtitle: 'A JavaScript and jQuery Developer\'s Guide',
-        author: 'Addy Osmani',
+        author: [{
+          name: 'Addy Osmani'
+        }],
         published: '2012-07-01T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 2,
         publisher: 'O\'Reilly Media',
         pages: 254,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -31,8 +39,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781449365035,
         title: 'Speaking JavaScript',
         subtitle: 'An In-Depth Guide for Programmers',
-        author: 'Axel Rauschmayer',
+        author: [
+          {
+            name: 'Axel Rauschmayer'
+          }
+        ],
         published: '2014-02-01T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 3,
         publisher: 'O\'Reilly Media',
         pages: 460,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -44,8 +58,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781491950296,
         title: 'Programming JavaScript Applications',
         subtitle: 'Robust Web Architecture with Node, HTML5, and Modern JS Libraries',
-        author: 'Eric Elliott',
+        author: [
+          {
+            name: 'Eric Elliott'
+          }
+        ],
         published: '2014-07-01T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 4,
         publisher: 'O\'Reilly Media',
         pages: 254,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -57,8 +77,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781593277574,
         title: 'Understanding ECMAScript 6',
         subtitle: 'The Definitive Guide for JavaScript Developers',
-        author: 'Nicholas C. Zakas',
+        author: [
+          {
+            name: 'Nicholas C. Zakas'
+          }
+        ],
         published: '2016-09-03T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 4,
         publisher: 'No Starch Press',
         pages: 352,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -70,8 +96,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781491904244,
         title: 'You Don\'t Know JS',
         subtitle: 'ES6 & Beyond',
-        author: 'Kyle Simpson',
+        author: [
+          {
+            name: 'Kyle Simpson'
+          }
+        ],
         published: '2015-12-27T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 5,
         publisher: 'O\'Reilly Media',
         pages: 278,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -83,8 +115,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781449325862,
         title: 'Git Pocket Guide',
         subtitle: 'A Working Introduction',
-        author: 'Richard E. Silverman',
+        author: [
+          {
+            name: 'Richard E. Silverman'
+          }
+        ],
         published: '2013-08-02T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 6,
         publisher: 'O\'Reilly Media',
         pages: 234,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
@@ -96,8 +134,14 @@ export const BOOKS: any = [
         isbnThirteen: 9781449337711,
         title: 'Designing Evolvable Web APIs with ASP.NET',
         subtitle: 'Harnessing the Power of the Web',
-        author: 'Glenn Block, et al.',
+        author: [
+          {
+            name: 'Glenn Block, et al.'
+          }
+        ],
         published: '2014-04-07T00:00:00.000Z',
+        categories: ['tag1', 'tag2'],
+        rating: 7,
         publisher: 'O\'Reilly Media',
         pages: 538,
         picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',

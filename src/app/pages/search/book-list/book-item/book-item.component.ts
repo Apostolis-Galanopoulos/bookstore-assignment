@@ -15,4 +15,8 @@ export class BookItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  rating(): number[] {
+    return new Array(5);
+  }
+
 }

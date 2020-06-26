@@ -1,1 +1,28 @@
-<p>add-book works!</p>
+<h1 class="title">Add new Book</h1>
+<div class="container">
+    <div class="form">
+        <form [formGroup]="bookForm">
+            <div class="child">
+                    <div class="group">
+                            <input type="text" formControlName="title" />
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Name</label>
+                            <!-- <div *ngIf="bookForm.controls.title.errors.required">
+                                    Write something longer please!
+                            </div> -->
+                          </div>
+               
+            </div>
+            <div class="child">
+                    <div class="group">
+                            <input type="text" formControlName="subtitle"/><span class="highlight"></span><span class="bar"></span>
+                            <label>Subtitle</label>
+                          </div>
+            </div>
+            <button type="submit" [disabled]="bookForm.invalid">
+                    Send
+            </button>
+        </form>
+    </div>
+</div>

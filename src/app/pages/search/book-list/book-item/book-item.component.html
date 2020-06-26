@@ -1,5 +1,5 @@
 <div class="picture"><img [src]="book.picture" alt="{{book.title}}"></div>
 <h3>{{ book.title }}</h3>
 <div class="rating">
-    <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+    <span *ngFor="let x of rating(); let i = index">{{ book.rating >= i ? '&#9733;' : '&#9734;'}}</span>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Book } from 'src/app/@core/books/books';
@@ -11,14 +11,13 @@ import { SearchService } from 'src/app/@core/search/search.service';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
 
   searchKey = '';
   books: Observable<Book[]>;
-  bookSearch: Subscription;
 
-  constructor(private store: Store<BookState>, private booksService: BooksService, private searchService: SearchService) {
-    this.booksService.getBooks();
+  constructor(private store: Store<BookState>, private searchService: SearchService) {
+    console.log('BookListComponent constructor');
     this.books = this.store.select('book');
   }
 
@@ -26,6 +25,10 @@ export class BookListComponent implements OnInit {
     this.searchService.bookSearch$.subscribe((search: string) => {
       this.searchKey = search;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.searchService.searchAbook('');
   }
 
 }

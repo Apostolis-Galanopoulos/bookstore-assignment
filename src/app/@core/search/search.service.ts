@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Sort } from './sort';
+import { SORT } from './sort.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +15,9 @@ export class SearchService {
 
   searchAbook(search: string): void {
     this.bookSearch.next(search);
+  }
+
+  getBookFilter(): Observable<Sort[]> {
+    return of(SORT);
   }
 }

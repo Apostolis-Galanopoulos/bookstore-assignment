@@ -1,0 +1,108 @@
+$bg-color: #424242;
+$hl-color: #2196F3;
+$muted-color: mix(white, $bg-color, 70%);
+$trans-time: 300ms;
+$width: 320px;
+
+:host {
+    .container {
+        background-color: #fff;
+        color: rgba(0,0,0,.87);
+        border-radius: 4px;
+        display: block;
+        width: 75%;
+        margin: 0 auto;
+        outline: none;
+        text-decoration: none;
+        transition-property: box-shadow,opacity;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        border: thin solid rgba(0,0,0,.12);
+    }
+    .form {
+        padding: 16px;
+        width: auto;
+        box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+
+        form {
+            display: flex;
+            flex-direction: row;
+            .child{
+                width: 100%;
+            }
+            h1 {
+              font-size: 3em;
+              font-weight: 300;
+              text-align: center;
+              color: $hl-color;
+            }
+            h5 {
+              text-align: center;
+              text-transform: uppercase;
+              color: $muted-color;
+            }
+            hr.sep {
+              background: $hl-color;
+              box-shadow: none;
+              border: none;
+              height: 2px;
+              width: 25%;
+              margin: 0px auto 45px auto;
+            }
+            .emoji {
+              font-size: 1.2em;
+            }
+          }
+          
+          .group {
+            position: relative;
+            margin: 45px 0;
+          }
+          
+          textarea {
+            resize: none;
+          }
+          
+          input,
+          textarea {
+            background: none;
+            color: $muted-color;
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            width: $width;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid $muted-color;
+            &:focus {
+              outline: none;
+            }
+            &:focus ~ label,
+            &:valid ~ label {
+              top: -14px;
+              font-size: 12px;
+              color: $hl-color;
+            }
+            &:focus ~ .bar:before {
+              width: $width;
+            }
+          }
+          
+          input[type="password"] {
+            letter-spacing: 0.3em;
+          }
+          
+          label {
+            color: $muted-color;
+            font-size: 16px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            left: 5px;
+            top: 10px;
+            transition: $trans-time ease all;
+          }
+
+    }
+}

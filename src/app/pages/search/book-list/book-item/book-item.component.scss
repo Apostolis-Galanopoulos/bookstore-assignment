@@ -37,15 +37,9 @@
     }
     .rating {
         unicode-bidi: bidi-override;
-        direction: rtl;
         color: #8c8c8c;
       }
       .rating > span {
         width: 1rem;
-      }
-      .rating > span:hover:before,
-      .rating > span:hover ~ span:before {
-         content: "\2605";
-         position: absolute;
       }
   }

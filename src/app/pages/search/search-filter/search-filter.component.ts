@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/@core/search/search.service';
+import { Sort } from 'src/app/@core/search/sort';
 
 @Component({
   selector: 'bookstore-search-filter',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
+
+  sortList: Sort[] = [];
 
   ngOnInit(): void {
+    this.searchService.getBookFilter().subscribe((sort: Sort[]) => {
+      this.sortList = sort;    
+    });
   }
 
 }

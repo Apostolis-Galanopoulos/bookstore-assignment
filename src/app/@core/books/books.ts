@@ -1,6 +1,6 @@
 interface Author {
     name: string;
-};
+}
 export interface Book {
     isbnTen: number;
     isbnThirteen: number;
@@ -10,7 +10,7 @@ export interface Book {
     published: string;
     publisher: string;
     categories: string[];
-    rating: number
+    rating: number;
     picture: string;
     pages: number;
     description: string;

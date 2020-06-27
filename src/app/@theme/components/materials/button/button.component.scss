@@ -1,0 +1,64 @@
+:host {
+    button {
+        align-items: center;
+        border-radius: 4px;
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-weight: 500;
+        letter-spacing: .0892857143em;
+        justify-content: center;
+        outline: 0;
+        position: relative;
+        text-decoration: none;
+        text-indent: .0892857143em;
+        text-transform: uppercase;
+        transition-duration: .28s;
+        transition-property: box-shadow,transform,opacity;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        height: 36px;
+        min-width: 105px;
+        will-change: box-shadow;
+        font-size: .875rem;
+        color: rgba(0,0,0,.87);
+        border-style: none;
+        cursor: pointer;
+        &.disabled {
+          color: rgba(0,0,0,.26);
+          background-color: rgba(0,0,0,.12);
+        }
+        &.active:active {
+          box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+        }
+        &.active:before {
+          border-radius: inherit;
+          bottom: 0;
+          color: inherit;
+          content: "";
+          left: 0;
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+          right: 0;
+          top: 0;
+          transition: opacity .2s cubic-bezier(.4,0,.6,1);
+          background-color: currentColor;
+      }
+      span {
+        align-items: center;
+        color: inherit;
+        display: flex;
+        justify-content: inherit;
+        line-height: normal;
+        position: relative;
+        height: inherit;
+        width: 100%;
+      }
+      }
+}

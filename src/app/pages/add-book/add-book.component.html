@@ -1,28 +1,159 @@
 <h1 class="title">Add new Book</h1>
 <div class="container">
-    <div class="form">
-        <form [formGroup]="bookForm">
-            <div class="child">
-                    <div class="group">
-                            <input type="text" formControlName="title" />
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label>Name</label>
-                            <!-- <div *ngIf="bookForm.controls.title.errors.required">
-                                    Write something longer please!
-                            </div> -->
-                          </div>
-               
-            </div>
-            <div class="child">
-                    <div class="group">
-                            <input type="text" formControlName="subtitle"/><span class="highlight"></span><span class="bar"></span>
-                            <label>Subtitle</label>
-                          </div>
-            </div>
-            <button type="submit" [disabled]="bookForm.invalid">
-                    Send
-            </button>
-        </form>
-    </div>
+        <div class="form-wrap">
+                <form [formGroup]="bookForm">
+                        <div class="form">
+                                <div class="child">
+                                        <div class="fields">
+                                                <input type="text" formControlName="title" required />
+                                                <label>Title</label>
+                                                <div *ngIf="bookForm.controls.title.dirty && bookForm.controls.title.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.title.errors.required"
+                                                                class="error-message">Title is required</div>
+                                                        <div *ngIf="bookForm.controls.title.errors.minlength ||
+                                        bookForm.controls.title.errors.maxlength" class="error-message">
+                                                                The title must be min 10 characters max 120
+                                                        </div>
+                                                        <div *ngIf="bookForm.controls.title.errors.pattern"
+                                                                class="error-message">Allow the following special
+                                                                characters: @”#&*!</div>
+                                                </div>
+                                        </div>
+                                        <div class="fields">
+                                                <textarea rows="4" cols="50" formControlName="description"
+                                                        required></textarea>
+                                                <label>Description</label>
+                                                <div *ngIf="bookForm.controls.description.dirty && bookForm.controls.description.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.description.errors.required"
+                                                                class="error-message">Description is required</div>
+                                                        <div *ngIf="bookForm.controls.description.errors.minlength ||
+                                        bookForm.controls.description.errors.maxlength" class="error-message">
+                                                                The description must be min 10 characters max 120
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <!-- START Author Names -->
+                                        <div class="group-of-fields">
+                                                <div class="fields" formArrayName="authorNames"
+                                                        *ngFor="let author of authorNames.controls; let i=index">
+                                                        <input type="text" [formControlName]="i" required />
+                                                        <label>Author name</label>
+                                                        <div *ngIf="authorNames.controls[i].dirty && authorNames.controls[i].errors"
+                                                                class="invalid">
+                                                                <div *ngIf="authorNames.controls[i].errors.required"
+                                                                        class="error-message">Title is required</div>
+                                                                <div *ngIf="authorNames.controls[i].errors.minlength"
+                                                                        class="error-message">
+                                                                        The author name must be min 5 characters
+                                                                </div>
+                                                        </div>
+                                                        <div class="addChild">
+                                                                <button type="button"
+                                                                        *ngIf="i===(authorNames.controls.length-1) && MAX_AUTHOR !== (i+1)"
+                                                                        (click)="AddAuthor()">Add
+                                                                        Author</button>
+                                                                <button type="button" *ngIf="i >= 1 && i <= MAX_AUTHOR"
+                                                                        (click)="removeAuthor(i)">Remove
+                                                                        Author</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <!-- END Author Names -->
+
+                                        <div class="fields">
+                                                <input type="text" formControlName="publisher" required />
+                                                <label>Publisher</label>
+                                                <div *ngIf="bookForm.controls.publisher.dirty && bookForm.controls.publisher.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.publisher.errors.required"
+                                                                class="error-message">Publisher is required</div>
+                                                        <div *ngIf="bookForm.controls.publisher.errors.minlength ||
+                                                bookForm.controls.publisher.errors.maxlength" class="error-message">
+                                                                The publisher must be min 5 characters max 60
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="fields">
+                                                <input type="number" formControlName="year" required />
+                                                <label>Year</label>
+                                                <div *ngIf="bookForm.controls.year.dirty && bookForm.controls.year.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.year.errors.required"
+                                                                class="error-message">Year is required</div>
+                                                        <div *ngIf="bookForm.controls.year.errors.minlength ||
+                                                        bookForm.controls.year.errors.maxlength || bookForm.controls.year.errors.pattern"
+                                                                class="error-message">
+                                                                The year must be 4 digit
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="fields">
+                                                <input type="number" formControlName="pageNumber" required />
+                                                <label>Page Number</label>
+                                                <div *ngIf="bookForm.controls.pageNumber.dirty && bookForm.controls.pageNumber.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.pageNumber.errors.required"
+                                                                class="error-message">Page Number is required</div>
+                                                        <div *ngIf="bookForm.controls.pageNumber.errors.min ||
+                                                        bookForm.controls.pageNumber.errors.max" class="error-message">
+                                                                The page number must be min 1 page max 999
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                </div>
+                                <div class="child">
+                                        <div class="fields">
+                                                <input type="text" formControlName="subtitle" required />
+                                                <label>Subtitle</label>
+                                        </div>
+                                        <div class="fields">
+                                                <input type="number" formControlName="rating" required />
+                                                <label>Rating</label>
+                                                <div *ngIf="bookForm.controls.rating.dirty && bookForm.controls.rating.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.rating.errors.min ||
+                                                        bookForm.controls.rating.errors.max" class="error-message">
+                                                                The rating must be min 0 star max 5
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="fields">
+                                                <input type="text" formControlName="isbnTen" required />
+                                                <label>ISBN-10</label>
+                                                <div *ngIf="bookForm.controls.isbnTen.dirty && bookForm.controls.isbnTen.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.isbnTen.errors.required"
+                                                                class="error-message">ISBN-10 is required</div>
+                                                        <div *ngIf="bookForm.controls.isbnTen.errors.pattern"
+                                                                class="error-message">
+                                                                ISBN-10 must be valid
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="fields">
+                                                <input type="text" formControlName="isbnThirteen" required />
+                                                <label>ISBN-13</label>
+                                                <div *ngIf="bookForm.controls.isbnThirteen.dirty && bookForm.controls.isbnThirteen.errors"
+                                                        class="invalid">
+                                                        <div *ngIf="bookForm.controls.isbnThirteen.errors.required"
+                                                                class="error-message">ISBN-13 is required</div>
+                                                        <div *ngIf="bookForm.controls.isbnThirteen.errors.pattern"
+                                                                class="error-message">
+                                                                ISBN-13 must be valid
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="actions">
+                                <bookstore-button [valid]="bookForm.invalid" color="#f5f5f5"
+                                        (onClickEvent)=onFormSubmit($event)>save</bookstore-button>
+                        </div>
+                </form>
+        </div>
 </div>

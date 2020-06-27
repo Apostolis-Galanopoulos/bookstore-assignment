@@ -15,7 +15,7 @@ export class SearchFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.getBookFilter().subscribe((sort: Sort[]) => {
-      this.sortList = sort;    
+      this.sortList = sort;
     });
   }
 

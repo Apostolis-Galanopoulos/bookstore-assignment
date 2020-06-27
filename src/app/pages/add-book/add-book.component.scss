@@ -1,5 +1,6 @@
 $bg-color: #424242;
 $hl-color: #2196F3;
+$invalid-color: red;
 $muted-color: mix(white, $bg-color, 70%);
 $trans-time: 300ms;
 $width: 320px;
@@ -13,6 +14,7 @@ $width: 320px;
         width: 75%;
         margin: 0 auto;
         outline: none;
+        margin-bottom: 50px;
         text-decoration: none;
         transition-property: box-shadow,opacity;
         overflow-wrap: break-word;
@@ -20,14 +22,18 @@ $width: 320px;
         white-space: normal;
         border: thin solid rgba(0,0,0,.12);
     }
-    .form {
+    .form-wrap {
         padding: 16px;
         width: auto;
         box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
 
         form {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            .form {
+              display: flex;
+              flex-direction: row;
+            }
             .child{
                 width: 100%;
             }
@@ -53,9 +59,21 @@ $width: 320px;
             .emoji {
               font-size: 1.2em;
             }
+            .invalid {
+              display: flex;
+              flex-direction: column;
+              max-width: 100%;
+              min-height: 14px;
+              margin-top: 10px;
+              overflow: hidden;
+              .error-message {
+                color: #ff5252;
+                caret-color: #ff5252;
+              }
+            }
           }
           
-          .group {
+          .fields {
             position: relative;
             margin: 45px 0;
           }
@@ -67,7 +85,7 @@ $width: 320px;
           input,
           textarea {
             background: none;
-            color: $muted-color;
+            color: #040404;
             font-size: 18px;
             padding: 10px 10px 10px 5px;
             display: block;
@@ -84,8 +102,8 @@ $width: 320px;
               font-size: 12px;
               color: $hl-color;
             }
-            &:focus ~ .bar:before {
-              width: $width;
+            &.ng-invalid.ng-dirty {
+              border-bottom: 1px solid $invalid-color;
             }
           }
           
@@ -102,6 +120,10 @@ $width: 320px;
             left: 5px;
             top: 10px;
             transition: $trans-time ease all;
+          }
+
+          .actions {
+            display: block;
           }
 
     }

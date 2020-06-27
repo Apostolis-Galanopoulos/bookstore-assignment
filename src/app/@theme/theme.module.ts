@@ -4,9 +4,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { ButtonComponent } from './components/materials/button/button.component';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
-  HeaderComponent, FooterComponent, BreadcrumbComponent
+  HeaderComponent, FooterComponent, BreadcrumbComponent, ButtonComponent
 ];
 
 @NgModule({

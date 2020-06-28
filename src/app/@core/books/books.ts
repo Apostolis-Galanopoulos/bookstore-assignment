@@ -2,7 +2,7 @@ interface Author {
     name: string;
 }
 export interface Book {
-    id?: number,
+    id?: number;
     isbnTen: number;
     isbnThirteen: number;
     title: string;

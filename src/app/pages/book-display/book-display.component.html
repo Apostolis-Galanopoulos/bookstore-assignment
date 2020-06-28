@@ -1,7 +1,7 @@
 <div class="book-card">
     <div class="book-media">
         <div class="image">
-            <img src="https://cdn.jpegmini.com/user/images/slider_puffin_jpegmini_mobile.jpg" />
+            <img [src]="book.picture" [alt]="book.title" />
         </div>
         <div class="author-name">
             <img src="assets/images/10-512.webp" alt="author image">
@@ -16,21 +16,20 @@
         </div>
     </div>
     <div class="book-info">
-        <h1 class="book-title">Book Title</h1>
-        <p class="book-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h1 class="book-title">{{book.title}}</h1>
+        <p class="book-description">{{book.description}}</p>
         <div class="book-actions">
             <bookstore-button color="#f5f5f5">Favorite</bookstore-button>
             <bookstore-button color="#f5f5f5">Share</bookstore-button>
         </div>
         <div class="book-categories">
-            <h2 class="book-year"> Category: #tag, #tag, #tag</h2>
+            <h2 class="book-year"> Category: {{book.categories}}</h2>
         </div>
-        <h2 class="book-year">Year: 1970</h2>
-        <h2 class="book-pages">Number of Pages: 874</h2>
-        <h2 class="book-publisher">Publisher: Self Published</h2>
-        <h2 class="book-isbn">ISBN-10: 1611433124</h2>
-        <h2 class="book-isbn">ISBN-13: 1789101423711</h2>
+        <h2 class="book-year">Year: {{book.published}}</h2>
+        <h2 class="book-pages">Number of Pages: {{book.pages}}</h2>
+        <h2 class="book-publisher">Publisher: {{book.publisher}}</h2>
+        <h2 class="book-isbn">ISBN-10: {{book.isbnTen}}</h2>
+        <h2 class="book-isbn">ISBN-13: {{book.isbnThirteen}}</h2>
         <div class="book-info-footer">
             <bookstore-button color="#f5f5f5">buy</bookstore-button>
         </div>

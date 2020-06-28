@@ -1,0 +1,20 @@
+<div class="fields" [formGroup]="parentForm">
+    <input [type]="inputType" [formControlName]="controlName" required />
+    <label>{{label}}</label>
+    <div *ngIf="dirty && errors" class="invalid">
+        <div *ngIf="errors && errors.required" class="error-message">{{label}} is required</div>
+        <div *ngIf="errors && errors.minlength" class="error-message">
+            The {{label}} must be min {{minlength}} characters
+        </div>
+        <div *ngIf="errors && errors.maxlength" class="error-message">
+            The {{label}} must be max {{maxlength}} characters
+        </div>
+        <div *ngIf="errors && errors.min" class="error-message">
+            The {{label}} must be min {{min}} page
+        </div>
+        <div *ngIf="errors && errors.max" class="error-message">
+            The {{label}} must be max {{max}} page
+        </div>
+        <div *ngIf="errors && errors.pattern" class="error-message">{{pattern}}</div>
+    </div>
+</div>

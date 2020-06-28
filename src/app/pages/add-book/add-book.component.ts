@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, FormArray, FormControl, Validators, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { BooksService } from 'src/app/@core/books/books.service';
 import { Book } from 'src/app/@core/books/books';
 
 @Component({
   selector: 'bookstore-add-book',
   templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.scss']
+  styleUrls: ['./add-book.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddBookComponent implements OnInit {
 
   MAX_AUTHOR: number = 3;
+  MAX_CATEGORIES: number = 4;
   bookForm: FormGroup;
 
   bookFileds: FormArray;
@@ -24,6 +26,15 @@ export class AddBookComponent implements OnInit {
           validators: [
             Validators.required,
             Validators.minLength(5),
+          ],
+          updateOn: 'change'
+        })
+      ]),
+      categories: this.formBuilder.array([
+        new FormControl('', {
+          validators: [
+            Validators.required,
+            Validators.minLength(3),
           ],
           updateOn: 'change'
         })
@@ -52,6 +63,8 @@ export class AddBookComponent implements OnInit {
         null,
         {
           validators: [
+            Validators.required,
+            Validators.maxLength(512),
           ],
           updateOn: 'change'
         }
@@ -60,8 +73,6 @@ export class AddBookComponent implements OnInit {
         null,
         {
           validators: [
-            Validators.minLength(4),
-            Validators.maxLength(4),
             Validators.pattern('^[0-9]{4}')
           ],
           updateOn: 'change'
@@ -83,7 +94,7 @@ export class AddBookComponent implements OnInit {
         {
           validators: [
             Validators.required,
-            Validators.max(999),
+            Validators.max(9999),
             Validators.min(1),
           ],
           updateOn: 'change'
@@ -121,40 +132,29 @@ export class AddBookComponent implements OnInit {
         }
       ],
     });
-
-    const book: Book = {
-      isbnTen: 9781449365035,
-      isbnThirteen: 9781449365035,
-      title: 'Test Book',
-      subtitle: 'An In-Depth Guide for Programmers',
-      author: [
-        {
-          name: 'Axel Rauschmayer'
-        }
-      ],
-      published: '2014-02-01T00:00:00.000Z',
-      publisher: 'O\'Reilly Media',
-      categories: ['tag1', 'tag2'],
-      rating: 1,
-      picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
-      pages: 460,
-      description: 'Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.',
-      website: 'http://speakingjs.com/'
-    };
-    this.bookService.addBook(book);
+    this.bookForm.get("description").valueChanges.subscribe(x => {
+      console.log('description');
+      console.log(x.length);
+      console.log(x.charAt(0));
+   })
   }
 
   get authorNames(): FormArray {
     return this.bookForm.get('authorNames') as FormArray;
   }
 
+  get categories(): FormArray {
+    return this.bookForm.get('categories') as FormArray;
+  }
+
   removeAuthor(index: number) {
+    console.log(index);
     const authorNames: FormArray = this.bookForm.get('authorNames') as FormArray;
     if (index > 0) {
       authorNames.removeAt(index);
     }
   }
-  AddAuthor() {
+  addAuthor() {
     const authorNames: FormArray = this.bookForm.get('authorNames') as FormArray;
     if (authorNames.length <= this.MAX_AUTHOR) {
       authorNames.push(new FormControl('', {
@@ -167,8 +167,53 @@ export class AddBookComponent implements OnInit {
     }
   }
 
+  removeCategory(index: number) {
+    console.log(index);
+    const categories: FormArray = this.bookForm.get('categories') as FormArray;
+    if (index > 0) {
+      categories.removeAt(index);
+    }
+  }
+  addCategory() {
+    const categories: FormArray = this.bookForm.get('categories') as FormArray;
+    if (categories.length <= this.MAX_CATEGORIES) {
+      categories.push(new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(3),
+        ],
+        updateOn: 'change'
+      }));
+    }
+  }
+
   onFormSubmit(event: any): void {
-    console.log(this.bookForm);
+    if(this.bookForm.valid) {
+      console.log(this.bookForm.value);
+      const book: Book = {
+        isbnTen: this.bookForm.value.isbnTen,
+        isbnThirteen: this.bookForm.value.isbnThirteen,
+        title: this.bookForm.value.title,
+        subtitle: this.bookForm.value.subtitle,
+        author: this.bookForm.value.authorNames,
+        published: this.bookForm.value.year,
+        publisher: this.bookForm.value.publisher,
+        categories: this.bookForm.value.categories,
+        rating: this.bookForm.value.rating,
+        picture: 'https://images-na.ssl-images-amazon.com/images/I/51+Ee6EuenL._SX376_BO1,204,203,200_.jpg',
+        pages: this.bookForm.value.pageNumber,
+        description: this.bookForm.value.description,
+        website: 'http://speakingjs.com/'
+      };
+      this.bookService.addBook(book);
+    }
+  }
+
+  isUpperCase(nameRe: RegExp): ValidatorFn  {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const forbidden = nameRe.test(control.value);
+      return forbidden ? {'forbiddenName': {value: control.value}} : null;
+    };
   }
 
 }

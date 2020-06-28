@@ -1,18 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'bookstore-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, AfterViewInit {
 
   @Input() valid: boolean;
   @Input() color: string;
 
   @Output() onClickEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -20,5 +21,7 @@ export class ButtonComponent implements OnInit {
   click() {
     this.onClickEvent.emit('clicked');
   }
-
+  ngAfterViewInit(): void {
+    this.changeDetectorRef.detectChanges();
+  }
 }

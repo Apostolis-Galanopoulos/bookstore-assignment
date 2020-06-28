@@ -1,0 +1,17 @@
+<div class="group-of-fields" [formGroup]="parentForm">
+    <div class="fields" [formArrayName]="controlName" *ngFor="let child of listOfChildren.controls; let i=index">
+        <input type="text" [formControlName]="i" required />
+        <label>{{label}}</label>
+        <div *ngIf="listOfChildren.controls[i].dirty && listOfChildren.controls[i].errors" class="invalid">
+            <div *ngIf="listOfChildren.controls[i].errors.required" class="error-message">Title is required</div>
+            <div *ngIf="listOfChildren.controls[i].errors.minlength" class="error-message">
+                The {{label}} must be min 5 characters
+            </div>
+        </div>
+        <div class="addChild">
+            <button type="button" *ngIf="i===(listOfChildren.controls.length-1) && maxChild !== (i+1)"
+                (click)="add()">{{buttonAddLabel}}</button>
+            <button type="button" *ngIf="i >= 1 && i <= maxChild" (click)="remove(i)">{{buttonRemoveLabel}}</button>
+        </div>
+    </div>
+</div>

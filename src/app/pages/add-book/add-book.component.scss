@@ -37,28 +37,6 @@ $width: 320px;
             .child{
                 width: 100%;
             }
-            h1 {
-              font-size: 3em;
-              font-weight: 300;
-              text-align: center;
-              color: $hl-color;
-            }
-            h5 {
-              text-align: center;
-              text-transform: uppercase;
-              color: $muted-color;
-            }
-            hr.sep {
-              background: $hl-color;
-              box-shadow: none;
-              border: none;
-              height: 2px;
-              width: 25%;
-              margin: 0px auto 45px auto;
-            }
-            .emoji {
-              font-size: 1.2em;
-            }
             .invalid {
               display: flex;
               flex-direction: column;

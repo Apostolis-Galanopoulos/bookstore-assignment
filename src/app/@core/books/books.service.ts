@@ -14,7 +14,6 @@ export class BooksService {
 
   getBooks(): void {
     const booksData: Book[] = BOOKS;
-    console.log(booksData);
     booksData.forEach((book: Book) => {
       this.addBook(book);
     });

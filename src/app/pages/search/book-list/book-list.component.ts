@@ -3,8 +3,9 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Book } from 'src/app/@core/books/books';
 import { BookState } from 'src/app/@core/books/books.state';
-import { BooksService } from 'src/app/@core/books/books.service';
 import { SearchService } from 'src/app/@core/search/search.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BooksService } from 'src/app/@core/books/books.service';
 
 @Component({
   selector: 'bookstore-book-list',
@@ -16,7 +17,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   searchKey = '';
   books: Observable<Book[]>;
 
-  constructor(private store: Store<BookState>, private searchService: SearchService) {
+  constructor(private store: Store<BookState>, private searchService: SearchService, private router: Router, private route: ActivatedRoute, private booksService: BooksService) {
     console.log('BookListComponent constructor');
     this.books = this.store.select('book');
   }
@@ -25,6 +26,11 @@ export class BookListComponent implements OnInit, OnDestroy {
     this.searchService.bookSearch$.subscribe((search: string) => {
       this.searchKey = search;
     });
+  }
+
+  routing(id: number) {
+    const path: string = `/../../pages/book/${id}`
+    this.router.navigate([path], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {

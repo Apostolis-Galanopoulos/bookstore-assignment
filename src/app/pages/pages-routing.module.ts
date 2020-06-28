@@ -21,6 +21,11 @@ const routes: Routes = [
         data: { title: 'Add Book' }
       },
       {
+        path: 'book/:id',
+        loadChildren: () => import('./book-display/book-display.module').then(m => m.BookDisplayModule),
+        data: { title: 'Book Display' }
+      },
+      {
         path: '',
         redirectTo: 'search',
         pathMatch: 'full'

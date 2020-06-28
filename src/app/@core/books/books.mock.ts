@@ -1,6 +1,7 @@
 
 export const BOOKS: any = [
       {
+        id: 1,
         isbnTen: 9781593275846,
         isbnThirteen: 9781449331818,
         title: 'Eloquent JavaScript, Second Edition',
@@ -18,6 +19,7 @@ export const BOOKS: any = [
         website: 'http://eloquentjavascript.net/'
       },
       {
+        id: 2,
         isbnTen: 9781449331818,
         isbnThirteen: 9781449331818,
         title: 'Learning JavaScript Design Patterns',
@@ -35,6 +37,7 @@ export const BOOKS: any = [
         website: 'http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/'
       },
       {
+        id: 3,
         isbnTen: 9781449365035,
         isbnThirteen: 9781449365035,
         title: 'Speaking JavaScript',
@@ -54,6 +57,7 @@ export const BOOKS: any = [
         website: 'http://speakingjs.com/'
       },
       {
+        id: 4,
         isbnTen: 9781491950296,
         isbnThirteen: 9781491950296,
         title: 'Programming JavaScript Applications',
@@ -73,6 +77,7 @@ export const BOOKS: any = [
         website: 'http://chimera.labs.oreilly.com/books/1234000000262/index.html'
       },
       {
+        id: 5,
         isbnTen: 9781593277574,
         isbnThirteen: 9781593277574,
         title: 'Understanding ECMAScript 6',
@@ -92,6 +97,7 @@ export const BOOKS: any = [
         website: 'https://leanpub.com/understandinges6/read'
       },
       {
+        id: 6,
         isbnTen: 9781491904244,
         isbnThirteen: 9781491904244,
         title: 'You Don\'t Know JS',
@@ -111,6 +117,7 @@ export const BOOKS: any = [
         website: 'https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20&%20beyond'
       },
       {
+        id: 7,
         isbnTen: 9781449325862,
         isbnThirteen: 9781449325862,
         title: 'Git Pocket Guide',
@@ -130,6 +137,7 @@ export const BOOKS: any = [
         website: 'http://chimera.labs.oreilly.com/books/1230000000561/index.html'
       },
       {
+        id: 8,
         isbnTen: 9781449337711,
         isbnThirteen: 9781449337711,
         title: 'Designing Evolvable Web APIs with ASP.NET',

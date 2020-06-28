@@ -22,7 +22,7 @@ export const MENUS: Menu[] = [
         {
           name: 'Category',
           icon: '',
-          path: 'category',
+          path: 'book',
         }
       ]
     },

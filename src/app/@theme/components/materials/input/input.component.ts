@@ -14,12 +14,7 @@ export class InputComponent implements OnInit, AfterViewInit {
   @Input() errors: any;
   @Input() controlName: string;
   @Input() label: string;
-  @Input() minlength: number;
-  @Input() maxlength: number;
-  @Input() pattern: string;
   @Input() inputType: string = 'text';
-  @Input() min: string;
-  @Input() max: string;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 

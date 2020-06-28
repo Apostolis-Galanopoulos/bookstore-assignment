@@ -14,11 +14,6 @@ export class TextareaComponent implements OnInit, AfterViewInit {
   @Input() errors: any;
   @Input() controlName: string;
   @Input() label: string;
-  @Input() minlength: number;
-  @Input() maxlength: number;
-  @Input() pattern: string;
-  @Input() min: string;
-  @Input() max: string;
   @Input() cols: number;
   @Input() rows: number;
 

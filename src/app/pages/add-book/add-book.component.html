@@ -4,50 +4,21 @@
                 <form [formGroup]="bookForm">
                         <div class="form">
                                 <div class="child">
+                                        <!-- title field start -->
                                         <bookstore-input [dirty]="bookForm.controls.title.dirty"
                                                 [errors]="bookForm.controls.title.errors" [controlName]="'title'"
-                                                [label]="'Title'" [inputType]="'text'" [minlength]="10"
-                                                [maxlength]="120"
-                                                [pattern]="'Allow the following special characters: @”#&*!'"
-                                                [parentForm]="bookForm">
+                                                [label]="'Title'" [inputType]="'text'" [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="text" formControlName="title" required />
-                                                <label>Title</label>
-                                                <div *ngIf="bookForm.controls.title.dirty && bookForm.controls.title.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.title.errors.required"
-                                                                class="error-message">Title is required</div>
-                                                        <div *ngIf="bookForm.controls.title.errors.minlength ||
-                                        bookForm.controls.title.errors.maxlength" class="error-message">
-                                                                The title must be min 10 characters max 120
-                                                        </div>
-                                                        <div *ngIf="bookForm.controls.title.errors.pattern"
-                                                                class="error-message">Allow the following special
-                                                                characters: @”#&*!</div>
-                                                </div>
-                                        </div> -->
+                                        <!-- title field end -->
+                                        <!-- description field start -->
                                         <bookstore-textarea [dirty]="bookForm.controls.description.dirty"
                                                 [errors]="bookForm.controls.description.errors"
-                                                [controlName]="'description'" [label]="'Description'" [minlength]="1"
-                                                [maxlength]="512" [rows]="4" [cols]="50" [parentForm]="bookForm">
+                                                [controlName]="'description'" [label]="'Description'" [rows]="4"
+                                                [cols]="50" [parentForm]="bookForm">
                                         </bookstore-textarea>
-                                        <!-- <div class="fields">
-                                                <textarea rows="4" cols="50" formControlName="description"
-                                                        required></textarea>
-                                                <label>Description</label>
-                                                <div *ngIf="bookForm.controls.description.dirty && bookForm.controls.description.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.description.errors.required"
-                                                                class="error-message">Description is required</div>
-                                                        <div *ngIf="bookForm.controls.description.errors.maxlength"
-                                                                class="error-message">
-                                                                The description must be max 512 characters
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- description field end -->
 
-                                        <!-- START Author Names -->
+                                        <!-- authorNames fields of group start -->
                                         <div class="group-of-fields" formArrayName="authorNames">
                                                 <bookstore-input-with-children [listOfChildren]="authorNames"
                                                         [controlName]="'authorNames'" [label]="'Author name'"
@@ -57,145 +28,63 @@
                                                         (onRemoveEvent)=removeAuthor($event)>
 
                                                 </bookstore-input-with-children>
-                                                <!-- <div class="fields" formArrayName="authorNames"
-                                                        *ngFor="let author of authorNames.controls; let i=index">
-                                                        <input type="text" [formControlName]="i" required />
-                                                        <label>Author name</label>
-                                                        <div *ngIf="authorNames.controls[i].dirty && authorNames.controls[i].errors"
-                                                                class="invalid">
-                                                                <div *ngIf="authorNames.controls[i].errors.required"
-                                                                        class="error-message">Title is required</div>
-                                                                <div *ngIf="authorNames.controls[i].errors.minlength"
-                                                                        class="error-message">
-                                                                        The author name must be min 5 characters
-                                                                </div>
-                                                        </div>
-                                                        <div class="addChild">
-                                                                <button type="button"
-                                                                        *ngIf="i===(authorNames.controls.length-1) && MAX_AUTHOR !== (i+1)"
-                                                                        (click)="AddAuthor()">Add
-                                                                        Author</button>
-                                                                <button type="button" *ngIf="i >= 1 && i <= MAX_AUTHOR"
-                                                                        (click)="removeAuthor(i)">Remove
-                                                                        Author</button>
-                                                        </div>
-                                                </div> -->
                                         </div>
+                                        <!-- authorNames fields of group end -->
 
-                                        <!-- END Author Names -->
+                                        <!-- publisher field start -->
                                         <bookstore-input [dirty]="bookForm.controls.publisher.dirty"
                                                 [errors]="bookForm.controls.publisher.errors"
                                                 [controlName]="'publisher'" [label]="'Publisher'" [inputType]="'text'"
-                                                [minlength]="5" [maxlength]="60" [pattern]="" [parentForm]="bookForm">
+                                                [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="text" formControlName="publisher" required />
-                                                <label>Publisher</label>
-                                                <div *ngIf="bookForm.controls.publisher.dirty && bookForm.controls.publisher.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.publisher.errors.required"
-                                                                class="error-message">Publisher is required</div>
-                                                        <div *ngIf="bookForm.controls.publisher.errors.minlength ||
-                                                bookForm.controls.publisher.errors.maxlength" class="error-message">
-                                                                The publisher must be min 5 characters max 60
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- publisher field end -->
+
+                                        <!-- year field start -->
                                         <bookstore-input [errors]="bookForm.controls.year.errors" [controlName]="'year'"
-                                                [label]="'Year'" [inputType]="'number'"
-                                                [pattern]="'The year must be 4 digit'" [parentForm]="bookForm"
+                                                [label]="'Year'" [inputType]="'number'" [parentForm]="bookForm"
                                                 [dirty]="bookForm.controls.year.dirty">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="number" formControlName="year" required />
-                                                <label>Year</label>
-                                                <div *ngIf="bookForm.controls.year.dirty && bookForm.controls.year.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.year.errors.required"
-                                                                class="error-message">Year is required</div>
-                                                        <div *ngIf="bookForm.controls.year.errors.minlength ||
-                                                        bookForm.controls.year.errors.maxlength || bookForm.controls.year.errors.pattern"
-                                                                class="error-message">
-                                                                The year must be 4 digit
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- year field end -->
+
+                                        <!-- pageNumber field start -->
                                         <bookstore-input [dirty]="bookForm.controls.pageNumber.dirty"
                                                 [errors]="bookForm.controls.pageNumber.errors"
                                                 [controlName]="'pageNumber'" [label]="'Page Number'"
-                                                [inputType]="'number'" [min]="1" [max]="9999" [parentForm]="bookForm">
+                                                [inputType]="'number'" [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="number" formControlName="pageNumber" required />
-                                                <label>Page Number</label>
-                                                <div *ngIf="bookForm.controls.pageNumber.dirty && bookForm.controls.pageNumber.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.pageNumber.errors.required"
-                                                                class="error-message">Page Number is required</div>
-                                                        <div *ngIf="bookForm.controls.pageNumber.errors.min ||
-                                                        bookForm.controls.pageNumber.errors.max" class="error-message">
-                                                                The page number must be min 1 page max 9999
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- pageNumber field end -->
 
                                 </div>
                                 <div class="child">
+                                        <!-- subtitle field start -->
                                         <bookstore-input [dirty]="bookForm.controls.subtitle.dirty"
                                                 [errors]="bookForm.controls.subtitle.errors" [controlName]="'subtitle'"
                                                 [inputType]="'text'" [label]="'Subtitle'" [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="text" formControlName="subtitle" required />
-                                                <label>Subtitle</label>
-                                        </div> -->
-                                        <div class="fields">
-                                                <input type="number" formControlName="rating" required />
-                                                <label>Rating</label>
-                                                <div *ngIf="bookForm.controls.rating.dirty && bookForm.controls.rating.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.rating.errors.min ||
-                                                        bookForm.controls.rating.errors.max" class="error-message">
-                                                                The rating must be min 0 star max 5
-                                                        </div>
-                                                </div>
-                                        </div>
+                                        <!-- subtitle field end -->
+
+                                        <!-- rating field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.rating.dirty"
+                                                [errors]="bookForm.controls.rating.errors" [controlName]="'rating'"
+                                                [label]="'Rating'" [inputType]="'number'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- rating field end -->
+
+                                        <!-- isbnTen field start -->
                                         <bookstore-input [dirty]="bookForm.controls.isbnTen.dirty"
                                                 [errors]="bookForm.controls.isbnTen.errors" [controlName]="'isbnTen'"
-                                                [inputType]="'text'" [label]="'ISBN-10'"
-                                                [pattern]="'ISBN-10 must be valid'" [parentForm]="bookForm">
+                                                [inputType]="'text'" [label]="'ISBN-10'" [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="text" formControlName="isbnTen" required />
-                                                <label>ISBN-10</label>
-                                                <div *ngIf="bookForm.controls.isbnTen.dirty && bookForm.controls.isbnTen.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.isbnTen.errors.required"
-                                                                class="error-message">ISBN-10 is required</div>
-                                                        <div *ngIf="bookForm.controls.isbnTen.errors.pattern"
-                                                                class="error-message">
-                                                                ISBN-10 must be valid
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- isbnTen field end -->
+
+                                        <!-- isbnThirteen field start -->
                                         <bookstore-input [dirty]="bookForm.controls.isbnThirteen.dirty"
                                                 [errors]="bookForm.controls.isbnThirteen.errors"
                                                 [controlName]="'isbnThirteen'" [inputType]="'text'" [label]="'ISBN-13'"
-                                                [pattern]="'ISBN-13 must be valid'" [parentForm]="bookForm">
+                                                [parentForm]="bookForm">
                                         </bookstore-input>
-                                        <!-- <div class="fields">
-                                                <input type="text" formControlName="isbnThirteen" required />
-                                                <label>ISBN-13</label>
-                                                <div *ngIf="bookForm.controls.isbnThirteen.dirty && bookForm.controls.isbnThirteen.errors"
-                                                        class="invalid">
-                                                        <div *ngIf="bookForm.controls.isbnThirteen.errors.required"
-                                                                class="error-message">ISBN-13 is required</div>
-                                                        <div *ngIf="bookForm.controls.isbnThirteen.errors.pattern"
-                                                                class="error-message">
-                                                                ISBN-13 must be valid
-                                                        </div>
-                                                </div>
-                                        </div> -->
+                                        <!-- isbnThirteen field end -->
+
                                         <div class="group-of-fields" formArrayName="categories">
                                                 <bookstore-input-with-children [listOfChildren]="categories"
                                                         [controlName]="'categories'" [label]="'Category name'"

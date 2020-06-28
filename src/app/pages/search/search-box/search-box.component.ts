@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/@core/search/search.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'bookstore-search-box',
@@ -7,16 +8,16 @@ import { SearchService } from 'src/app/@core/search/search.service';
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
+  searchForm: FormGroup;
 
-  private values = '';
-
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-  }
-
-  onKey(event: any) {
-    this.values = event.target.value;
-    this.searchService.searchAbook(this.values);
+    this.searchForm = this.formBuilder.group({
+      search: ['']
+    });
+    this.searchForm.controls.search.valueChanges.subscribe(value => {
+      this.searchService.searchAbook(value);
+    });
   }
 }

@@ -1,1 +1,3 @@
-<input type="text" results=5 placeholder="Search..." (keyup)="onKey($event)">
+<form [formGroup]="searchForm">
+    <input type="text" results=5 placeholder="Search..." formControlName="search">
+</form>

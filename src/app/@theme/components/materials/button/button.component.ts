@@ -10,8 +10,9 @@ export class ButtonComponent implements OnInit, AfterViewInit {
 
   @Input() valid: boolean;
   @Input() color: string;
+  @Input() size: string;
 
-  @Output() onClickEvent = new EventEmitter();
+  @Output() clickEvent = new EventEmitter();
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
@@ -19,7 +20,7 @@ export class ButtonComponent implements OnInit, AfterViewInit {
   }
 
   click() {
-    this.onClickEvent.emit('clicked');
+    this.clickEvent.emit('clicked');
   }
   ngAfterViewInit(): void {
     this.changeDetectorRef.detectChanges();

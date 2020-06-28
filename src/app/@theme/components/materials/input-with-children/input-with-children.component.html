@@ -9,9 +9,12 @@
             </div>
         </div>
         <div class="addChild">
-            <button type="button" *ngIf="i===(listOfChildren.controls.length-1) && maxChild !== (i+1)"
-                (click)="add()">{{buttonAddLabel}}</button>
-            <button type="button" *ngIf="i >= 1 && i <= maxChild" (click)="remove(i)">{{buttonRemoveLabel}}</button>
+            <bookstore-button *ngIf="i===(listOfChildren.controls.length-1) && maxChild !== (i+1)" [size]="'small'"
+                color="#f5f5f5" (clickEvent)=add()>{{buttonAddLabel}}</bookstore-button>
+
+            <div class="addChild">
+                <bookstore-button *ngIf="i >= 1 && i <= maxChild" (click)="remove(i)" [size]="'small'" color="#f5f5f5"
+                    (clickEvent)=remove(i)>{{buttonRemoveLabel}}</bookstore-button>
+            </div>
         </div>
     </div>
-</div>

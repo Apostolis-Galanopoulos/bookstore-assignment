@@ -14,7 +14,7 @@ export class InputComponent implements OnInit, AfterViewInit {
   @Input() errors: any;
   @Input() controlName: string;
   @Input() label: string;
-  @Input() inputType: string = 'text';
+  @Input() inputType = 'text';
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 

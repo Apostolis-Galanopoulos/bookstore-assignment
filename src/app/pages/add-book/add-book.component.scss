@@ -1,46 +1,53 @@
 $bg-color: #424242;
-$hl-color: #2196F3;
+$hl-color: #2196f3;
 $invalid-color: red;
 $muted-color: mix(white, $bg-color, 70%);
 $trans-time: 300ms;
 $width: 320px;
 
 :host {
-    .container {
-        background-color: #fff;
-        color: rgba(0,0,0,.87);
-        border-radius: 4px;
-        display: block;
-        width: 75%;
-        margin: 0 auto;
-        outline: none;
-        margin-bottom: 50px;
-        text-decoration: none;
-        transition-property: box-shadow,opacity;
-        overflow-wrap: break-word;
-        position: relative;
-        white-space: normal;
-        border: thin solid rgba(0,0,0,.12);
-    }
-    .form-wrap {
-        padding: 16px;
-        width: auto;
-        box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+  .container {
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 4px;
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    outline: none;
+    margin-bottom: 50px;
+    text-decoration: none;
+    transition-property: box-shadow, opacity;
+    overflow-wrap: break-word;
+    position: relative;
+    white-space: normal;
+    border: thin solid rgba(0, 0, 0, 0.12);
+  }
+  .form-wrap {
+    padding: 16px;
+    width: auto;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
 
-        form {
-            display: flex;
-            flex-direction: column;
-            .form {
-              display: flex;
-              flex-direction: row;
-            }
-            .child{
-                width: 100%;
-            }
-          }
-          .actions {
-            display: block;
-          }
-
+    form {
+      display: flex;
+      flex-direction: column;
+      .form {
+        display: flex;
+        flex-direction: row;
+      }
+      .side {
+        width: 100%;
+        padding-right: 7%;
+      }
     }
+    .actions {
+      display: block;
+    }
+    fieldset {
+      color: rgba(0, 0, 0, 0.38);
+      border-radius: 6px 6px 6px 6px;
+      -moz-border-radius: 6px 6px 6px 6px;
+      -webkit-border-radius: 6px 6px 6px 6px;
+      border: 1px solid rgba(0, 0, 0, 0.38);
+    }
+  }
 }

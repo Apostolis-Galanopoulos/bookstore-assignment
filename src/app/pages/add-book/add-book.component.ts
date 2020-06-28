@@ -12,8 +12,8 @@ import { ValidatorsCustom } from './validators';
 })
 export class AddBookComponent implements OnInit {
 
-  MAX_AUTHOR: number = 3;
-  MAX_CATEGORIES: number = 4;
+  MAX_AUTHOR = 3;
+  MAX_CATEGORIES = 4;
   bookForm: FormGroup;
 
   bookFileds: FormArray;
@@ -156,7 +156,7 @@ export class AddBookComponent implements OnInit {
       authorNames.removeAt(index);
     }
   }
-    /**
+  /**
    * @description add a new author
    */
   addAuthor() {
@@ -198,7 +198,7 @@ export class AddBookComponent implements OnInit {
   }
   /**
    *
-   * @description 
+   * @description
    */
   onFormSubmit(event: any): void {
     console.log(this.bookForm);

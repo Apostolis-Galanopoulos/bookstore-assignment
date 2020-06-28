@@ -1,4 +1,5 @@
-<button type="submit" (click)="click()" [ngClass]="{'active': valid === false, 'disabled': valid === true}"
+<button type="submit" (click)="click()"
+    [ngClass]="{'active': valid === false, 'disabled': valid === true, 'small': size === 'small'}"
     [ngStyle]="{'background-color': color}" [disabled]="valid">
     <span>
         <ng-content></ng-content>

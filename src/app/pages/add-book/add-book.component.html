@@ -3,7 +3,7 @@
         <div class="form-wrap">
                 <form [formGroup]="bookForm">
                         <div class="form">
-                                <div class="child">
+                                <div class="side">
                                         <!-- title field start -->
                                         <bookstore-input [dirty]="bookForm.controls.title.dirty"
                                                 [errors]="bookForm.controls.title.errors" [controlName]="'title'"
@@ -19,16 +19,17 @@
                                         <!-- description field end -->
 
                                         <!-- authorNames fields of group start -->
-                                        <div class="group-of-fields" formArrayName="authorNames">
+                                        <fieldset class="group-of-fields" formArrayName="authorNames">
+                                                <legend>Author Names:</legend>
                                                 <bookstore-input-with-children [listOfChildren]="authorNames"
                                                         [controlName]="'authorNames'" [label]="'Author name'"
                                                         [buttonAddLabel]="'Add Author'"
                                                         [buttonRemoveLabel]="'Remove Author'" [parentForm]="bookForm"
-                                                        [maxChild]="MAX_AUTHOR" (onAddEvent)=addAuthor()
-                                                        (onRemoveEvent)=removeAuthor($event)>
+                                                        [maxChild]="MAX_AUTHOR" (addEvent)=addAuthor()
+                                                        (removeEvent)=removeAuthor($event)>
 
                                                 </bookstore-input-with-children>
-                                        </div>
+                                        </fieldset>
                                         <!-- authorNames fields of group end -->
 
                                         <!-- publisher field start -->
@@ -55,7 +56,7 @@
                                         <!-- pageNumber field end -->
 
                                 </div>
-                                <div class="child">
+                                <div class="side">
                                         <!-- subtitle field start -->
                                         <bookstore-input [dirty]="bookForm.controls.subtitle.dirty"
                                                 [errors]="bookForm.controls.subtitle.errors" [controlName]="'subtitle'"
@@ -85,21 +86,22 @@
                                         </bookstore-input>
                                         <!-- isbnThirteen field end -->
 
-                                        <div class="group-of-fields" formArrayName="categories">
+                                        <fieldset class="group-of-fields" formArrayName="categories">
+                                                <legend>Categories:</legend>
                                                 <bookstore-input-with-children [listOfChildren]="categories"
                                                         [controlName]="'categories'" [label]="'Category name'"
                                                         [buttonAddLabel]="'Add Category'"
                                                         [buttonRemoveLabel]="'Remove Category'" [parentForm]="bookForm"
-                                                        [maxChild]="MAX_CATEGORIES" (onAddEvent)=addCategory()
-                                                        (onRemoveEvent)=removeCategory($event)>
+                                                        [maxChild]="MAX_CATEGORIES" (addEvent)=addCategory()
+                                                        (removeEvent)=removeCategory($event)>
 
                                                 </bookstore-input-with-children>
-                                        </div>
+                                        </fieldset>
                                 </div>
                         </div>
                         <div class="actions">
                                 <bookstore-button [valid]="bookForm.invalid" color="#f5f5f5"
-                                        (onClickEvent)=onFormSubmit($event)>save</bookstore-button>
+                                        (clickEvent)=onFormSubmit($event)>save</bookstore-button>
                         </div>
                 </form>
         </div>

@@ -17,7 +17,7 @@ export class SearchBoxComponent implements OnInit {
       search: ['']
     });
     this.searchForm.controls.search.valueChanges.subscribe(value => {
-      this.searchService.searchAbook(value);
+      this.searchService.searchAbook(value, 'search');
     });
   }
 }

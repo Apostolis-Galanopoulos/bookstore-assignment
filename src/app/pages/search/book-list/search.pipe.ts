@@ -6,10 +6,17 @@ import { Book } from 'src/app/@core/books/books';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(books: Book[], value: string): unknown {
+  transform(books: Book[], value: string, searchType: string): unknown {
     console.log(value);
+    console.log(searchType);
     return books.filter((book) => {
-     return book.title.toLowerCase().includes(value.toLowerCase());
+      switch (searchType.toLowerCase()) {
+        case 'search':
+          return book.title.toLowerCase().includes(value.toLowerCase());
+        case 'publisher':
+          return book.publisher.toLowerCase().includes(value.toLowerCase());
+      }
+
     });
   }
 

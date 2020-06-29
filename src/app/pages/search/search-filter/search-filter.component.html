@@ -1,5 +1,13 @@
 <div class="filter">
-    <select id="selectbox" data-selected="">
-        <option *ngFor="let item of sortList" value="item.code" >Sort by: {{item.name}}</option>
+  <form [formGroup]="publisherForm">
+    <section>
+      <label class="select-label">Publisher:</label>
+      <select formArrayName="books" formControlName="publisher">
+        <option *ngFor="let publisher of books.controls; let i = index">
+          <input type="radio" [formControlName]="i" [id]="i">
+          <label [for]="i">{{publisher.value}}</label>
+        </option>
       </select>
+    </section>
+  </form>
 </div>

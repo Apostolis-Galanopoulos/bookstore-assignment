@@ -21,7 +21,7 @@
         <div class="book-categories">
             <h2 class="book-year"> Category: {{book.categories}}</h2>
         </div>
-        <h2 class="book-year">Year: {{book.published}}</h2>
+        <h2 class="book-year">Year: {{book.published | date:"yyyy" }}</h2>
         <h2 class="book-pages">Number of Pages: {{book.pages}}</h2>
         <h2 class="book-publisher">Publisher: {{book.publisher}}</h2>
         <h2 class="book-isbn">ISBN-10: {{book.isbnTen}}</h2>

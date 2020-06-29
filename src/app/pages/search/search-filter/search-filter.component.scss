@@ -1,19 +1,10 @@
 :host {
-    width: 100%;
-    .filter {
-        width: 75%;
-        margin: 10px auto 0;
-    }
-    select {
-        margin-bottom: 1em;
-        padding: .25em;
-        border: 0;
-        border-bottom: 2px solid currentcolor; 
-        font-weight: bold;
-        border-radius: 0;
-        &:focus, &:active {
-          outline: 0;
-          border-bottom-color: red;
-        }
-      }
+  width: 100%;
+  .filter {
+    width: 75%;
+    margin: 10px auto 0;
+  }
+  .select-label {
+    margin-right: 10px;
+  }
 }

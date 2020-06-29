@@ -5,6 +5,7 @@ import { Book } from 'src/app/@core/books/books';
 import { BookState } from 'src/app/@core/books/books.state';
 import { SearchService } from 'src/app/@core/search/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SearchBook } from 'src/app/@core/search/searchBook';
 
 @Component({
   selector: 'bookstore-book-list',
@@ -13,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
-  searchKey = '';
+  searchBook: SearchBook;
   books: Observable<Book[]>;
 
   constructor(
@@ -21,13 +22,13 @@ export class BookListComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private router: Router,
     private route: ActivatedRoute) {
-    console.log('BookListComponent constructor');
     this.books = this.store.select('book');
   }
 
   ngOnInit(): void {
-    this.searchService.bookSearch$.subscribe((search: string) => {
-      this.searchKey = search;
+    this.searchService.bookSearch$.subscribe((search) => {
+      console.log(search);
+      this.searchBook = search;
     });
   }
 
@@ -37,7 +38,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.searchService.searchAbook('');
+    this.searchService.searchAbook('', 'search');
   }
 
 }

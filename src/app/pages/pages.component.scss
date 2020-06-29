@@ -1,49 +1,81 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    grid-template-rows: 50px 1fr 50px;
-    grid-template-areas:
-      "header header header"
-      "main main main"
-      "footer footer footer";
-      width: 100%;
-      height: 100vh;
-  }
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    "header header header"
+    "main main main"
+    "footer footer footer";
+  width: 100%;
+  height: 100vh;
+}
 
-  .header {
-    grid-area: header;
-    border-bottom: 1px solid #bdbdc1;
+.header {
+  grid-area: header;
+  border-bottom: 1px solid #bdbdc1;
+}
+
+.main {
+  grid-area: main;
+  max-width: 70%;
+  min-width: 70%;
+  margin: 0 auto;
+  background-color: #fffff8;
+  .nav {
+    width: 100%;
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    background-color: #f9f9f9;
+    .nav-item {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+      .nav-link {
+        padding: 0.5em 1em;
+        color: #777;
+        display: block;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .nav-link:hover {
+        background-color: #eee;
+      }
+      .nav-link.active {
+        background-color: #d6d6d6;
+        color: #133b56;
+      }
+    }
   }
-  
+}
+
+.footer {
+  grid-area: footer;
+  border-top: 1px solid #bdbdc1;
+}
+
+.header,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: #efefef;
+}
+@media only screen and (max-width: 1600px) {
   .main {
-    grid-area: main;
-    max-width: 70%;
-    min-width: 70%;
-    margin: 0 auto;
-    background-color: #fffff8;
+    max-width: 80%;
+    min-width: 80%;
   }
-  
-  .footer {
-    grid-area: footer;
-    border-top: 1px solid #bdbdc1;
+}
+@media only screen and (max-width: 1377px) {
+  .main {
+    max-width: 100%;
+    min-width: 100%;
   }
-
-  .header, .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-    background-color: #efefef;
-  }
-  @media only screen and (max-width: 1600px) {
-    .main {
-      max-width: 80%;
-      min-width: 80%;
-    }
-  }
-  @media only screen and (max-width: 1377px) {
-    .main {
-      max-width: 100%;
-      min-width: 100%;
-    }
-  }
+}

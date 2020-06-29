@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import {filter} from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { MenuService } from 'src/app/@core/menu/menu.service';
 import { Menu } from 'src/app/@core/menu/menu';
 import { Breadcrumb } from './breadcrumb';
@@ -29,10 +29,10 @@ export class BreadcrumbComponent implements OnInit {
    */
   private subscribeRouting() {
     this.router.events
-    .pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe((router: NavigationEnd) => {
-      this.makeBreadcrumb(router.urlAfterRedirects);
-    });
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((router: NavigationEnd) => {
+        this.makeBreadcrumb(router.urlAfterRedirects);
+      });
   }
 
   /**
@@ -49,6 +49,7 @@ export class BreadcrumbComponent implements OnInit {
     // for each item of the array will be made a breadcrumb item
     routerList.forEach((router, index) => {
       // mapping the current place of URL with the corresponding menu item
+      if (typeof listTarget !== 'undefined') {
         target = listTarget.find((page: Menu) => {
           return page.path === router;
         });
@@ -60,7 +61,8 @@ export class BreadcrumbComponent implements OnInit {
         if (index + 1 !== routerList.length) {
           listTarget = target.children;
         }
-      });
+      }
+    });
   }
 
 }

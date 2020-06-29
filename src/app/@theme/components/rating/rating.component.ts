@@ -15,7 +15,4 @@ export class RatingComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  ratingList(): number[] {
-    return new Array(5);
-  }
 }

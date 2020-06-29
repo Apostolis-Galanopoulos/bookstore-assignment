@@ -1,2 +1,2 @@
-<span *ngFor="let x of ratingList(); let i = index"
-    [ngClass]="{'active': rating >= i, 'small': size==='small', 'medium': size==='medium', 'large': size==='large'}"></span>
+<span *ngFor="let x of [1,2,3,4,5];"
+    [ngClass]="{'active': rating >= x, 'small': size==='small', 'medium': size==='medium', 'large': size==='large'}"></span>

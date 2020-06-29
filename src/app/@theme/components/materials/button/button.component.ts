@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 })
 export class ButtonComponent implements OnInit, AfterViewInit {
 
-  @Input() valid: boolean;
+  @Input() valid = false;
   @Input() color: string;
   @Input() size: string;
 

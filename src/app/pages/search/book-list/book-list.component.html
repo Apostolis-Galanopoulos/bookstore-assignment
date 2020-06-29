@@ -1,2 +1,2 @@
-<bookstore-book-item *ngFor="let item of books | async | search: searchBook.value: searchBook.key; let i = index"
+<bookstore-book-item *ngFor="let item of books$ | async | search: searchBook.value: searchBook.key; let i = index"
    (click)="routing(item.id)" [book]="item"></bookstore-book-item>

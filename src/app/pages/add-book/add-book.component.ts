@@ -3,6 +3,9 @@ import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractCon
 import { BooksService } from 'src/app/@core/books/books.service';
 import { Book } from 'src/app/@core/books/books';
 import { ValidatorsCustom } from './validators';
+import { Store, select } from '@ngrx/store';
+import { BookState } from 'src/app/@core/books/books.state';
+import { total } from 'src/app/@core/books/selectors';
 
 @Component({
   selector: 'bookstore-add-book',
@@ -18,7 +21,7 @@ export class AddBookComponent implements OnInit {
 
   bookFileds: FormArray;
 
-  constructor(private bookService: BooksService, private formBuilder: FormBuilder) { }
+  constructor(private bookService: BooksService, private formBuilder: FormBuilder, private store: Store<BookState> ) { }
 
   ngOnInit(): void {
     this.bookForm = this.formBuilder.group({
@@ -35,7 +38,7 @@ export class AddBookComponent implements OnInit {
         new FormControl('', {
           validators: [
             Validators.required,
-            Validators.minLength(3),
+            Validators.minLength(1),
           ],
           updateOn: 'change'
         })
@@ -190,7 +193,7 @@ export class AddBookComponent implements OnInit {
       categories.push(new FormControl('', {
         validators: [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(1),
         ],
         updateOn: 'change'
       }));
@@ -201,15 +204,19 @@ export class AddBookComponent implements OnInit {
    * @description
    */
   onFormSubmit(event: any): void {
-    console.log(this.bookForm);
+    let totalBook = 0;
+    // get a total of books, for development reason
+    this.store.pipe(select(total)).subscribe((count: number) => totalBook = count);
+
     if (this.bookForm.valid) {
       const book: Book = {
+        id: (totalBook + 1), // the id is development reason because the data doesn't save on the server.
         isbnTen: this.bookForm.value.isbnTen,
         isbnThirteen: this.bookForm.value.isbnThirteen,
         title: this.bookForm.value.title,
         subtitle: this.bookForm.value.subtitle,
         author: this.bookForm.value.authorNames,
-        published: this.bookForm.value.year,
+        published: String(new Date(this.bookForm.value.year)),
         publisher: this.bookForm.value.publisher,
         categories: this.bookForm.value.categories,
         rating: this.bookForm.value.rating,
@@ -218,6 +225,7 @@ export class AddBookComponent implements OnInit {
         description: this.bookForm.value.description,
         website: 'http://speakingjs.com/'
       };
+      console.log(book);
       // add the book in store
       this.bookService.addBook(book);
 

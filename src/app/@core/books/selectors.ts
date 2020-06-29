@@ -14,3 +14,12 @@ export const selectBookById = createSelector(
         }
     }
 );
+
+export const total = createSelector(
+    selectAllBooks,
+    (allBooks: Book[]) => {
+        if (allBooks) {
+            return allBooks.length;
+        }
+    }
+);

@@ -15,19 +15,18 @@ import { SearchBook } from 'src/app/@core/search/searchBook';
 export class BookListComponent implements OnInit, OnDestroy {
 
   searchBook: SearchBook;
-  books: Observable<Book[]>;
+  books$: Observable<Book[]>;
 
   constructor(
     private store: Store<BookState>,
     private searchService: SearchService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.books = this.store.select('book');
+    this.books$ = this.store.select('book');
   }
 
   ngOnInit(): void {
     this.searchService.bookSearch$.subscribe((search) => {
-      console.log(search);
       this.searchBook = search;
     });
   }

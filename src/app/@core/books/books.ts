@@ -1,13 +1,10 @@
-interface Author {
-    name: string;
-}
 export interface Book {
     id?: number;
     isbnTen: number;
     isbnThirteen: number;
     title: string;
     subtitle: string;
-    author: Author[];
+    author: string[];
     published: string;
     publisher: string;
     categories: string[];

@@ -20,7 +20,7 @@ export class BookDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.store.pipe(select(selectBookById, { id: id })).subscribe((item: Book[]) => this.books = item);
+    this.store.pipe(select(selectBookById, { id })).subscribe((item: Book[]) => this.books = item);
     this.book = [...this.books].shift();
   }
 

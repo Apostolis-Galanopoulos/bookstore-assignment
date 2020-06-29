@@ -1,17 +1,22 @@
 <div class="book-card">
-    <div class="book-media">
+    <div *ngIf="books.length===0">
+        <h2>
+            Book not Found
+        </h2>
+    </div>
+    <div *ngIf="books.length>0" class="book-media">
         <div class="image">
             <img [src]="book.picture" [alt]="book.title" />
         </div>
         <div class="author-name">
             <img src="assets/images/10-512.webp" alt="author image">
-            <h2>Author Name</h2>
+            <h2>{{book.author}}</h2>
         </div>
         <div class="rating">
             <bookstore-rating [rating]="book.rating"></bookstore-rating>
         </div>
     </div>
-    <div class="book-info">
+    <div *ngIf="books.length>0" class="book-info">
         <h1 class="book-title">{{book.title}}</h1>
         <p class="book-description">{{book.description}}</p>
         <div class="book-actions">

@@ -1,0 +1,20 @@
+<div class="fields" [formGroup]="parentForm">
+    <textarea [rows]="rows" [cols]="cols" [formControlName]="controlName" required></textarea>
+    <label>{{label}}</label>
+    <div *ngIf="dirty && errors" class="invalid">
+        <div *ngIf="errors && errors.required" class="error-message">{{label}} is required</div>
+        <div *ngIf="errors && errors.minlength" class="error-message">
+            The {{label}} must be min {{errors.minlength.requiredLength}} characters
+        </div>
+        <div *ngIf="errors && errors.maxlength" class="error-message">
+            The {{label}} must be max {{errors.maxlength.requiredLength}} characters
+        </div>
+        <div *ngIf="errors && errors.min" class="error-message">
+            The {{label}} must be min {{errors.min.min}}
+        </div>
+        <div *ngIf="errors && errors.max" class="error-message">
+            The {{label}} must be maxed {{errors.max.max}}
+        </div>
+        <div *ngIf="errors && errors.custom" class="error-message">{{errors.custom.value}}</div>
+    </div>
+</div>

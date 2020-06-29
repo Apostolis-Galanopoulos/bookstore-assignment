@@ -1,0 +1,41 @@
+<div class="book-card">
+    <div *ngIf="books.length===0">
+        <h2>
+            Book not Found
+        </h2>
+    </div>
+    <div *ngIf="books.length>0" class="book-media">
+        <div class="image">
+            <img [src]="book.picture" [alt]="book.title" />
+        </div>
+        <div class="author-name">
+            <img src="assets/images/10-512.webp" alt="author image">
+            <h2>{{book.author}}</h2>
+        </div>
+        <div class="rating">
+            <bookstore-rating [rating]="book.rating"></bookstore-rating>
+        </div>
+    </div>
+    <div *ngIf="books.length>0" class="book-info">
+        <h1 class="book-title">{{book.title}}</h1>
+        <p class="book-description">{{book.description}}</p>
+        <div class="book-actions">
+            <bookstore-button color="#f5f5f5">Favorite</bookstore-button>
+            <bookstore-button color="#f5f5f5">Share</bookstore-button>
+        </div>
+        <div class="book-categories">
+            <h2 class="book-year"> Category: {{book.categories}}</h2>
+        </div>
+        <h2 class="book-year">Year: {{book.published | date:"yyyy" }}</h2>
+        <h2 class="book-pages">Number of Pages: {{book.pages}}</h2>
+        <h2 class="book-publisher">Publisher: {{book.publisher}}</h2>
+        <h2 class="book-isbn">ISBN-10: {{book.isbnTen}}</h2>
+        <h2 class="book-isbn">ISBN-13: {{book.isbnThirteen}}</h2>
+        <div class="book-info-footer">
+            <bookstore-button color="#f5f5f5">buy</bookstore-button>
+        </div>
+    </div>
+</div>
+<div class="books-interesting">
+    <bookstore-books-interesting></bookstore-books-interesting>
+</div>

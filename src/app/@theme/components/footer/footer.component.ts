@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bookstore-footer',
-  template: ''
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent implements OnInit {
 

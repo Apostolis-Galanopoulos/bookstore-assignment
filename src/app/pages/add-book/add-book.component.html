@@ -1,0 +1,108 @@
+<h1 class="title">Add new Book</h1>
+<div class="container">
+        <div class="form-wrap">
+                <form [formGroup]="bookForm">
+                        <div class="form">
+                                <div class="side">
+                                        <!-- title field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.title.dirty"
+                                                [errors]="bookForm.controls.title.errors" [controlName]="'title'"
+                                                [label]="'Title'" [inputType]="'text'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- title field end -->
+                                        <!-- description field start -->
+                                        <bookstore-textarea [dirty]="bookForm.controls.description.dirty"
+                                                [errors]="bookForm.controls.description.errors"
+                                                [controlName]="'description'" [label]="'Description'" [rows]="4"
+                                                [cols]="50" [parentForm]="bookForm">
+                                        </bookstore-textarea>
+                                        <!-- description field end -->
+
+                                        <!-- authorNames fields of group start -->
+                                        <fieldset class="group-of-fields" formArrayName="authorNames">
+                                                <legend>Author Names:</legend>
+                                                <bookstore-input-with-children [listOfChildren]="authorNames"
+                                                        [controlName]="'authorNames'" [label]="'Author name'"
+                                                        [buttonAddLabel]="'Add Author'"
+                                                        [buttonRemoveLabel]="'Remove Author'" [parentForm]="bookForm"
+                                                        [maxChild]="MAX_AUTHOR" (addEvent)=addAuthor()
+                                                        (removeEvent)=removeAuthor($event)>
+
+                                                </bookstore-input-with-children>
+                                        </fieldset>
+                                        <!-- authorNames fields of group end -->
+
+                                        <!-- publisher field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.publisher.dirty"
+                                                [errors]="bookForm.controls.publisher.errors"
+                                                [controlName]="'publisher'" [label]="'Publisher'" [inputType]="'text'"
+                                                [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- publisher field end -->
+
+                                        <!-- year field start -->
+                                        <bookstore-input [errors]="bookForm.controls.year.errors" [controlName]="'year'"
+                                                [label]="'Year'" [inputType]="'number'" [parentForm]="bookForm"
+                                                [dirty]="bookForm.controls.year.dirty">
+                                        </bookstore-input>
+                                        <!-- year field end -->
+
+                                        <!-- pageNumber field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.pageNumber.dirty"
+                                                [errors]="bookForm.controls.pageNumber.errors"
+                                                [controlName]="'pageNumber'" [label]="'Page Number'"
+                                                [inputType]="'number'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- pageNumber field end -->
+
+                                </div>
+                                <div class="side">
+                                        <!-- subtitle field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.subtitle.dirty"
+                                                [errors]="bookForm.controls.subtitle.errors" [controlName]="'subtitle'"
+                                                [inputType]="'text'" [label]="'Subtitle'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- subtitle field end -->
+
+                                        <!-- rating field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.rating.dirty"
+                                                [errors]="bookForm.controls.rating.errors" [controlName]="'rating'"
+                                                [label]="'Rating'" [inputType]="'number'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- rating field end -->
+
+                                        <!-- isbnTen field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.isbnTen.dirty"
+                                                [errors]="bookForm.controls.isbnTen.errors" [controlName]="'isbnTen'"
+                                                [inputType]="'text'" [label]="'ISBN-10'" [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- isbnTen field end -->
+
+                                        <!-- isbnThirteen field start -->
+                                        <bookstore-input [dirty]="bookForm.controls.isbnThirteen.dirty"
+                                                [errors]="bookForm.controls.isbnThirteen.errors"
+                                                [controlName]="'isbnThirteen'" [inputType]="'text'" [label]="'ISBN-13'"
+                                                [parentForm]="bookForm">
+                                        </bookstore-input>
+                                        <!-- isbnThirteen field end -->
+
+                                        <fieldset class="group-of-fields" formArrayName="categories">
+                                                <legend>Categories:</legend>
+                                                <bookstore-input-with-children [listOfChildren]="categories"
+                                                        [controlName]="'categories'" [label]="'Category'"
+                                                        [buttonAddLabel]="'Add Category'"
+                                                        [buttonRemoveLabel]="'Remove Category'" [parentForm]="bookForm"
+                                                        [maxChild]="MAX_CATEGORIES" (addEvent)=addCategory()
+                                                        (removeEvent)=removeCategory($event)>
+
+                                                </bookstore-input-with-children>
+                                        </fieldset>
+                                </div>
+                        </div>
+                        <div class="actions">
+                                <bookstore-button [valid]="bookForm.invalid" color="#f5f5f5"
+                                        (clickEvent)=onFormSubmit($event)>save</bookstore-button>
+                        </div>
+                </form>
+        </div>
+</div>

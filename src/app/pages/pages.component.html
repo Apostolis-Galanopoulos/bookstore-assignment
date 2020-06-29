@@ -1,5 +1,16 @@
 <div class="grid-container">
-    <bookstore-header class="header"></bookstore-header>
-    <router-outlet class="main"></router-outlet>
-    <bookstore-footer class="footer"></bookstore-footer>
+  <bookstore-header class="header"></bookstore-header>
+  <main class="main">
+    <ul class="nav">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="search" [routerLinkActive]="['active']">Search</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="addBook" [routerLinkActive]="['active']">Add new book</a>
+      </li>
+    </ul>
+    <bookstore-breadcrumb></bookstore-breadcrumb>
+    <router-outlet></router-outlet>
+  </main>
+  <bookstore-footer class="footer"></bookstore-footer>
 </div>

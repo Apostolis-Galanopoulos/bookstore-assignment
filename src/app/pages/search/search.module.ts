@@ -8,10 +8,12 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { SearchPipe } from './book-list/search.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ThemeModule } from 'src/app/@theme/theme.module';
 
 @NgModule({
   declarations: [SearchComponent, SearchBoxComponent, SearchFilterComponent, BookListComponent, BookItemComponent, SearchPipe],
   imports: [
+    ThemeModule,
     ReactiveFormsModule,
     SearchRoutingModule,
     CommonModule

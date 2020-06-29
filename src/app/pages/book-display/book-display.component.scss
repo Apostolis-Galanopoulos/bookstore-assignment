@@ -71,32 +71,6 @@
         justify-content: flex-start;
         align-items: center;
         flex-wrap: nowrap;
-        span {
-          align-items: center;
-          display: inline-flex;
-          font-feature-settings: "liga";
-          font-size: 54px;
-          justify-content: center;
-          letter-spacing: normal;
-          &::before {
-            content: "\2606";
-            display: inline-block;
-            font-size: inherit;
-            text-rendering: auto;
-            line-height: inherit;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-          }
-          &.active::before {
-            content: "\01F7CA";
-            display: inline-block;
-            font-size: inherit;
-            text-rendering: auto;
-            line-height: inherit;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-          }
-        }
       }
     }
     .book-info {

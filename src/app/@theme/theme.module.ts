@@ -9,9 +9,17 @@ import { InputComponent } from './components/materials/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaComponent } from './components/materials/textarea/textarea.component';
 import { InputWithChildrenComponent } from './components/materials/input-with-children/input-with-children.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 const COMPONENTS = [
-  HeaderComponent, FooterComponent, BreadcrumbComponent, ButtonComponent, InputComponent, TextareaComponent, InputWithChildrenComponent
+  HeaderComponent,
+  FooterComponent,
+  BreadcrumbComponent,
+  ButtonComponent,
+  InputComponent,
+  TextareaComponent,
+  InputWithChildrenComponent,
+  RatingComponent
 ];
 
 @NgModule({

@@ -2,8 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bookstore-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  template: '<h1>Bookstore</h1>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {

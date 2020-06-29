@@ -35,7 +35,9 @@ export class BookListComponent implements OnInit, OnDestroy {
     const path = `/../../pages/book/${id}`;
     this.router.navigate([path], { relativeTo: this.route });
   }
-
+  trackByFn(index: number, item: Book) {    
+    return item.id;
+  }
   ngOnDestroy(): void {
     this.searchService.searchAbook('', 'search');
   }

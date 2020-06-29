@@ -4,7 +4,6 @@ import { selectBookById } from 'src/app/@core/books/selectors';
 import { BookState } from 'src/app/@core/books/books.state';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/@core/books/books';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'bookstore-book-display',

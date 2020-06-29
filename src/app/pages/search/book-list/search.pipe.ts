@@ -7,8 +7,6 @@ import { Book } from 'src/app/@core/books/books';
 export class SearchPipe implements PipeTransform {
 
   transform(books: Book[], value: string, searchType: string): unknown {
-    console.log(value);
-    console.log(searchType);
     return books.filter((book) => {
       switch (searchType.toLowerCase()) {
         case 'search':

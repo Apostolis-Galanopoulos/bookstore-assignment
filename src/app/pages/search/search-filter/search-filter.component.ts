@@ -15,7 +15,7 @@ export class SearchFilterComponent implements OnInit {
 
   booksList: Book[];
   publisherForm: FormGroup;
-  AllPublisher = 'All Publisher';
+  AllPublishers = 'All Publishers';
 
   constructor(private formBuilder: FormBuilder, private store: Store<BookState>, private searchService: SearchService, ) {
     this.store.select('book').subscribe((books: Book[]) => {
@@ -32,7 +32,7 @@ export class SearchFilterComponent implements OnInit {
 
     this.publisherForm.get('publisher').valueChanges.subscribe(value => {
       let searchValue = value;
-      this.AllPublisher === value ? searchValue = '' : searchValue = value;
+      this.AllPublishers === value ? searchValue = '' : searchValue = value;
       this.searchService.searchAbook(searchValue, 'publisher');
     });
   }
@@ -41,7 +41,7 @@ export class SearchFilterComponent implements OnInit {
    */
   private publisher() {
     const uniqueSet = new Set();
-    uniqueSet.add(this.AllPublisher);
+    uniqueSet.add(this.AllPublishers);
     const books: FormArray = this.publisherForm.get('books') as FormArray;
     this.booksList.forEach((item: Book) => {
       uniqueSet.add(item.publisher);

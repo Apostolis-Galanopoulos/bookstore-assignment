@@ -112,8 +112,6 @@ export class AddBookComponent implements OnInit {
         {
           validators: [
             Validators.required,
-            Validators.max(5),
-            Validators.min(0),
             ValidatorsCustom.ratingValid
           ],
           updateOn: 'change'
@@ -153,7 +151,6 @@ export class AddBookComponent implements OnInit {
    * @description remove the author from the list by index
    */
   removeAuthor(index: number) {
-    console.log(index);
     const authorNames: FormArray = this.bookForm.get('authorNames') as FormArray;
     if (index > 0) {
       authorNames.removeAt(index);
@@ -178,7 +175,6 @@ export class AddBookComponent implements OnInit {
    * @description remove the category from the list by index
    */
   removeCategory(index: number) {
-    console.log(index);
     const categories: FormArray = this.bookForm.get('categories') as FormArray;
     if (index > 0) {
       categories.removeAt(index);
@@ -225,7 +221,6 @@ export class AddBookComponent implements OnInit {
         description: this.bookForm.value.description,
         website: 'http://speakingjs.com/'
       };
-      console.log(book);
       // add the book in store
       this.bookService.addBook(book);
 

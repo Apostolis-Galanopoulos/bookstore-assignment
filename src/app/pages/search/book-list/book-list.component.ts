@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Book } from 'src/app/@core/books/books';
 import { BookState } from 'src/app/@core/books/books.state';
 import { SearchService } from 'src/app/@core/search/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchBook } from 'src/app/@core/search/searchBook';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'bookstore-book-list',
@@ -14,6 +15,7 @@ import { SearchBook } from 'src/app/@core/search/searchBook';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
+  private destroyed$ = new Subject();
   searchBook: SearchBook;
   books$: Observable<Book[]>;
 
@@ -26,7 +28,9 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.searchService.bookSearch$.subscribe((search) => {
+    this.searchService.bookSearch$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe((search) => {
       this.searchBook = search;
     });
   }
@@ -35,11 +39,14 @@ export class BookListComponent implements OnInit, OnDestroy {
     const path = `/../../pages/book/${id}`;
     this.router.navigate([path], { relativeTo: this.route });
   }
-  trackByFn(index: number, item: Book) {    
+
+  trackByFn(item: Book) {
     return item.id;
   }
+
   ngOnDestroy(): void {
     this.searchService.searchAbook('', 'search');
+    this.destroyed$.complete();
   }
 
 }

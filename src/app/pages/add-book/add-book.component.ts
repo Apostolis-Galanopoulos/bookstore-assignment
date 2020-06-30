@@ -112,8 +112,6 @@ export class AddBookComponent implements OnInit {
         {
           validators: [
             Validators.required,
-            Validators.max(5),
-            Validators.min(0),
             ValidatorsCustom.ratingValid
           ],
           updateOn: 'change'

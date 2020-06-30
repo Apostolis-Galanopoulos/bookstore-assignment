@@ -36,7 +36,7 @@ export class ValidatorsCustom {
      */
     static ratingValid(control: AbstractControl): { [key: string]: any } | null {
         if (control.dirty && control.value) {
-            const regexp = RegExp('^[0-9]');
+            const regexp = RegExp('^[0-5]{1}$');
             return regexp.test(control.value) ? null : { custom: { value: 'The Rating must be min 0 max 5' } };
         }
         return null;

@@ -5,7 +5,7 @@
         <div *ngIf="listOfChildren.controls[i].dirty && listOfChildren.controls[i].errors" class="invalid">
             <div *ngIf="listOfChildren.controls[i].errors.required" class="error-message">Title is required</div>
             <div *ngIf="listOfChildren.controls[i].errors.minlength" class="error-message">
-                The {{label}} must be min {{listOfChildren.controls[i].errors.minlength.requiredLength}} characters
+                The {{label}} must be min {{listOfChildren.controls[i].errors.minlength.requiredLength}} character
             </div>
         </div>
         <div class="addChild">

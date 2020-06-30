@@ -4,10 +4,10 @@
     <div *ngIf="dirty && errors" class="invalid">
         <div *ngIf="errors && errors.required" class="error-message">{{label}} is required</div>
         <div *ngIf="errors && errors.minlength" class="error-message">
-            The {{label}} must be min {{errors.minlength.requiredLength}} characters
+            The {{label}} must be min {{errors.minlength.requiredLength}} character
         </div>
         <div *ngIf="errors && errors.maxlength" class="error-message">
-            The {{label}} must be max {{errors.maxlength.requiredLength}} characters
+            The {{label}} must be max {{errors.maxlength.requiredLength}} character
         </div>
         <div *ngIf="errors && errors.min" class="error-message">
             The {{label}} must be min {{errors.min.min}}

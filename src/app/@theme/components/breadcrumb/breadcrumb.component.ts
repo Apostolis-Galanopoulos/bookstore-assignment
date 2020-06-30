@@ -13,7 +13,6 @@ import { Breadcrumb } from './breadcrumb';
 export class BreadcrumbComponent implements OnInit {
 
   breadcrumbList: Array<Breadcrumb> = [];
-  name: string;
   menu: Array<Menu> = [];
 
   constructor(private router: Router, private menuService: MenuService) { }
